@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 
 class Filter extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
 
   render() {
     return (
       <label htmlFor="search">
         Buscar
-        <input type="search" name="search" onInput={this.props.myFunc}></input>
+        <input type="text" name={this.props.name} onInput={this.props.change}></input>
       </label>
     )
   }

@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class CoinItem extends Component {
   constructor(props) {
     super(props);
-    this.state = {date: new Date()};
     this.goTo = this.goTo.bind(this);
   }
 
@@ -14,7 +13,7 @@ class CoinItem extends Component {
   render(props) {
     return (
       <div className="coin-item">
-        <div>{this.state.date.toLocaleTimeString()}</div>
+        <div>{new Date().toLocaleTimeString()}</div>
         <div>#{this.props.coin.rank}</div>
         <div onClick={this.goTo}>{this.props.coin.symbol}</div>
         <div onClick={this.goTo}>{this.props.coin.name}</div>

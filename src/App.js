@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import CoinItem from './components/CoinItem'
+import React, { Component } from 'react'
 import Filter from './components/Filter'
-
+import CoinTable from './components/CoinTable'
 import logo from './logo.svg';
 import './App.css';
 
@@ -14,7 +13,7 @@ class App extends Component {
       coins: [],
       filter: ''
     };
-    this.handleChildFunc = this.handleChildFunc.bind(this);
+    this.onChangeInput = this.onChangeInput.bind(this);
   }
 
   componentDidMount() {
@@ -22,26 +21,8 @@ class App extends Component {
     .then(response => this.setState({coins: response.data}))
   }
 
-
-  renderCoinList() {
-    let coins = this.state.coins
-    let filter = this.state.filter
-
-    if(filter !== '') {
-      coins = this.state.coins.filter((e) => {
-        // return e.name.toLowerCase().includes(filter.toLowerCase())
-        return e.name.toLowerCase().includes(filter.toLowerCase())
-      })
-    }
-    console.log(coins.length)
-
-    return coins.map(function (coin) {
-      return <CoinItem key={coin.id} coin={coin}></CoinItem>
-    })
-  }
-
-  handleChildFunc(e) {
-    this.setState({filter: e.target.value})
+  onChangeInput(e) {
+    this.setState({[e.target.name]: e.target.value})
   }
 
   render() {
@@ -51,9 +32,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <Filter myFunc={this.handleChildFunc} ></Filter>
+        <Filter name="filter" change={this.onChangeInput} ></Filter>
         {this.state.coins.length > 0 &&
-          this.renderCoinList()
+          <CoinTable coins={this.state.coins} filter={this.state.filter}></CoinTable>
         }
       </div>
     );
