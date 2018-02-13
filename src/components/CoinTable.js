@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CoinItem from './CoinItem'
+import CoinItem from './CoinItem/CoinItem'
 
 class CoinTable extends Component {
   renderCoinList() {

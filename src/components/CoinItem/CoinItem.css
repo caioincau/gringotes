@@ -1,0 +1,12 @@
+.coin-item {
+  display: flex;
+  margin: 10px 0;
+  padding: 10px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  justify-content: center;
+}
+
+.coin-item__value {
+  min-width: 100px;
+}
