@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Filter from './components/Filter'
 import CoinTable from './components/CoinTable'
-import logo from './logo.svg';
 import './App.css';
 
 import axios from 'axios'
@@ -29,8 +28,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Gringotes App</h1>
         </header>
         <Filter name="filter" change={this.onChangeInput} ></Filter>
         {this.state.coins.length > 0 &&
