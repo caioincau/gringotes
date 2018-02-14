@@ -1,40 +1,30 @@
 import React, { Component } from 'react'
-import Filter from './components/Filter'
-import CoinTable from './components/CoinTable'
+
+import CoinList from './views/CoinList'
 import './App.css';
 
-import axios from 'axios'
+
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      coins: [],
-      filter: ''
-    };
-    this.onChangeInput = this.onChangeInput.bind(this);
   }
 
-  componentDidMount() {
-    axios.get('https://api.coinmarketcap.com/v1/ticker/')
-    .then(response => this.setState({coins: response.data}))
-  }
 
-  onChangeInput(e) {
-    this.setState({[e.target.name]: e.target.value})
-  }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Gringotes App</h1>
-        </header>
-        <Filter name="filter" change={this.onChangeInput} ></Filter>
-        {this.state.coins.length > 0 &&
-          <CoinTable coins={this.state.coins} filter={this.state.filter}></CoinTable>
-        }
-      </div>
+      <Router>
+        <div>
+          <Route exact path="/" component={CoinList}/>
+        </div>
+      </Router>
     );
   }
 }

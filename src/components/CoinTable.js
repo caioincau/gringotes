@@ -19,12 +19,13 @@ class CoinTable extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Coins</h2>
-        {
-          this.renderCoinList()
-        }
-      </div>
+      <table className="striped">
+        <tbody>
+          {
+            this.renderCoinList()
+          }
+        </tbody>
+      </table>
     )
   }
 }
