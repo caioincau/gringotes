@@ -6,7 +6,7 @@ class Filter extends Component {
     return (
       <label htmlFor="search">
         Buscar
-        <input type="text" name={this.props.name} onInput={this.props.change}></input>
+        <input type="text"  placeholder="Coin name" name={this.props.name} onInput={this.props.change}></input>
       </label>
     )
   }

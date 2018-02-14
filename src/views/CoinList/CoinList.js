@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react'
 
-import Filter from '../components/Filter'
-import CoinTable from '../components/CoinTable'
+import Filter from '../../components/Filter'
+import CoinTable from '../../components/CoinTable'
 import axios from 'axios'
 import './CoinList.css';
 
