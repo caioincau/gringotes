@@ -1,4 +1,4 @@
-import CoinTable from './CoinTable'
+import CoinTableContainer from './CoinTable'
 
 
-export default CoinTable
+export default CoinTableContainer

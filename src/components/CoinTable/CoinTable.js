@@ -1,34 +1,24 @@
 import React, { Component } from 'react';
 import CoinItem from '../CoinItem'
 
-class CoinTable extends Component {
-  filterCoins(filter) {
-    return this.props.coins.filter((e) => {
-      return e.name.toLowerCase().includes(filter.toLowerCase())
-    })
-  }
-  renderCoinList() {
-    let coins = this.props.coins
-    let filter = this.props.filter
-
-    coins = filter ? this.filterCoins(filter) : coins
-
-    return coins.map(function (coin) {
-      return <CoinItem key={coin.id} coin={coin}></CoinItem>
-    })
+class CoinTableContainer extends Component {
+  filterCoins(coins, filter) {
+    console.log(coins, filter)
+    return (coins && filter) ? coins.filter(coin => coin.name.toLowerCase().includes(filter.toLowerCase())) : coins
   }
 
   render() {
-    return (
-      <table className="striped">
-        <tbody>
-          {
-            this.renderCoinList()
-          }
-        </tbody>
-      </table>
-    )
+    return <CoinTable coins={this.filterCoins(this.props.coins, this.props.filter)} />
   }
+
 }
 
-export default CoinTable
+const CoinTable = ({coins}) => (
+  <table className="striped">
+    <tbody>
+      { coins && coins.map(coin => <CoinItem key={coin.id} coin={coin}></CoinItem>) }
+    </tbody>
+  </table>
+)
+
+export default CoinTableContainer
