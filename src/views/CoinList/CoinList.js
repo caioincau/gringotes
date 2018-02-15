@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 import Filter from '../../components/Filter'
-import CoinTable from '../../components/CoinTable'
+import CoinTableContainer from '../../components/CoinTable'
 import axios from 'axios'
 import './CoinList.css';
 
@@ -33,7 +33,7 @@ class CoinList extends Component {
         <Filter name="filter" change={this.onChangeInput} ></Filter>
         <div class="card">
           {this.state.coins.length > 0 &&
-            <CoinTable coins={this.state.coins} filter={this.state.filter}></CoinTable>
+            <CoinTableContainer coins={this.state.coins} filter={this.state.filter}></CoinTableContainer>
           }
         </div>
       </div>
