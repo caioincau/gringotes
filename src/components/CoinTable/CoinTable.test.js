@@ -39,9 +39,14 @@ it('renders without crashing', () => {
   expect(wrapper.find('.coin-item').length).toEqual(2);
 });
 
-it('should filter', () => {
+it('should filter and find one', () => {
   wrapper = mountComponent('EC')
   expect(wrapper.find('.coin-item').length).toEqual(1);
+});
+
+it('should filter and find none', () => {
+  wrapper = mountComponent('XHR')
+  expect(wrapper.find('.coin-item').length).toEqual(0);
 });
 
 
