@@ -25,8 +25,13 @@ beforeEach(() => {
 it('renders without crashing', () => {
   expect(wrapper.find('.coin-item__value').length).toEqual(5);
 });
-it('should click', () => {
+
+it('should render link', () => {
   expect(wrapper.find('.coin-item__link').length).toEqual(1);
+});
+
+it('should render link text', () => {
+  expect(wrapper.find('.coin-item__link').text()).toEqual('EC');
 });
 
 
