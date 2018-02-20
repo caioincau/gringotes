@@ -3,7 +3,6 @@ import CoinItem from '../CoinItem'
 
 class CoinTableContainer extends Component {
   filterCoins(coins, filter) {
-    console.log(coins, filter)
     return (coins && filter) ? coins.filter(coin => coin.name.toLowerCase().includes(filter.toLowerCase())) : coins
   }
 
