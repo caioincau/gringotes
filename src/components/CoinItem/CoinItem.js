@@ -9,14 +9,14 @@ class CoinItem extends Component {
   }
 
   goTo(e) {
-    console.log(this)
+    console.log('click')
   }
 
   render(props) {
     return (
       <tr className="coin-item">
         <td className="coin-item__value">#{this.props.coin.rank}</td>
-        <td className="coin-item__value" onClick={this.goTo}>{this.props.coin.symbol}</td>
+        <td className="coin-item__value coin-item__link" onClick={this.goTo}>{this.props.coin.symbol}</td>
         <td className="coin-item__value" onClick={this.goTo}>{this.props.coin.name}</td>
         <td className="coin-item__value">{this.props.coin.price_usd}</td>
         <td className="coin-item__value">{this.props.coin['24h_volume_usd']}</td>

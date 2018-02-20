@@ -22,8 +22,8 @@ class CoinList extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://api.coinmarketcap.com/v1/ticker/')
-    .then(response => this.setState({coins: response.data}))
+    // axios.get('https://api.coinmarketcap.com/v1/ticker/')
+    // .then(response => this.setState({coins: response.data}))
   }
 
   render = () => {
