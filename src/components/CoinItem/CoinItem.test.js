@@ -10,7 +10,7 @@ const coin = {
   rank: '1',
   symbol: 'EC',
   name: 'ECoin',
-  price_usd: '23232',
+  price_usd: '23232.32131',
   '24h_volume_usd': '312321321321'
  }
 
@@ -28,6 +28,11 @@ it('renders without crashing', () => {
 
 it('should render link', () => {
   expect(wrapper.find('.coin-item__link').length).toEqual(1);
+});
+
+it('should format number', () => {
+  const coinItem = new CoinItem()
+  expect(coinItem.formatAmount(coin.price_usd)).toEqual('U$23232,32');
 });
 
 it('should render link text', () => {

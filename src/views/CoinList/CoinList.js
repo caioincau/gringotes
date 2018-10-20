@@ -31,7 +31,7 @@ class CoinList extends Component {
       <div className="coin-list">
         <h2 className="coin-list__header">Coins</h2>
         <Filter name="filter" change={this.onChangeInput} ></Filter>
-        <div class="card">
+        <div className="card">
           {this.state.coins.length > 0 &&
             <CoinTableContainer coins={this.state.coins} filter={this.state.filter}></CoinTableContainer>
           }
