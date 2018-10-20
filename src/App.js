@@ -1,30 +1,28 @@
 import React, { Component } from 'react'
+import { Provider } from 'react-redux'
 
 import CoinList from './views/CoinList'
 import ErrorBoundary from './components/ErrorBoundary'
 import './App.css';
 
-
-
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+import store from './store/store'
 
+class App extends Component {
   render() {
     return (
       <Router>
-        <ErrorBoundary>
-          <div>
-            <Route exact path="/" component={CoinList}/>
-          </div>
-        </ErrorBoundary>
+        <Provider store={store}>
+          <ErrorBoundary>
+            <div>
+              <Route exact path="/" component={CoinList}/>
+            </div>
+          </ErrorBoundary>
+        </Provider>
       </Router>
     );
   }

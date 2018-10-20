@@ -1,5 +1,8 @@
 
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as coinActions from '../../store/actions/coins'
 
 import Filter from '../../components/Filter'
 import CoinTableContainer from '../../components/CoinTable'
@@ -10,8 +13,8 @@ class CoinList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filter: '',
-      coins: []
+      filter: ''
+      // coins: []
     };
     this.onChangeInput = this.onChangeInput.bind(this);
   }
@@ -23,7 +26,10 @@ class CoinList extends Component {
 
   componentDidMount() {
     axios.get('https://api.coinmarketcap.com/v1/ticker/')
-    .then(response => this.setState({coins: response.data}))
+    .then(response => {
+      this.props.setCoins(response.data)
+      // this.setState({coins: response.data})
+    })
   }
 
   render = () => {
@@ -32,8 +38,8 @@ class CoinList extends Component {
         <h2 className="coin-list__header">Coins</h2>
         <Filter name="filter" change={this.onChangeInput} ></Filter>
         <div className="card">
-          {this.state.coins.length > 0 &&
-            <CoinTableContainer coins={this.state.coins} filter={this.state.filter}></CoinTableContainer>
+          {this.props.coinList.length > 0 &&
+            <CoinTableContainer coins={this.props.coinList} filter={this.state.filter}></CoinTableContainer>
           }
         </div>
       </div>
@@ -41,4 +47,10 @@ class CoinList extends Component {
   }
 }
 
-export default CoinList
+const mapStateToProps = state => ({
+  coinList: state.coins
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators(coinActions, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoinList)
